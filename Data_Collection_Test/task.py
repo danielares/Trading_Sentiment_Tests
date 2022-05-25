@@ -30,7 +30,6 @@ def get_binance_data(start_time, end_time):
     url += (f"&endTime={end_time}")
     data = requests.get(url)
     df = pd.json_normalize(data.json())
-    print(type(df))
     return df
 
 
@@ -51,6 +50,4 @@ while ( end_time_stamp >= start_time_stamp ):
 df_final=df_final.drop(["longAccount", "shortAccount"],axis=1)
 
 # CSV
-df_final.to_csv('output.csv', encoding='utf-8', index=False)
-
-print(df_final.columns)
+df_final.to_csv('Data_Collection_Test/output.csv', encoding='utf-8', index=False)
